@@ -10,7 +10,6 @@ public:
         if(leftAns== false) return false;
 
         bool rightAns = isSameTree(p->right, q->right);
-        // if(leftAns== false) return false;
         if(rightAns == false) return false;
 
         return true;
