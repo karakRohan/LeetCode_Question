@@ -6,29 +6,21 @@ public:
         return 1+max(levels(root->left), levels(root->right));
     }
 
-    void nthLevel(TreeNode* root, int curr, int level, vector<int>& v){
-        if(root==NULL) return; // base case
-        if(curr==level){
-            v.push_back(root->val); // root
-            return;
-        }
-        nthLevel(root->left, curr+1, level, v); // left
-        nthLevel(root->right, curr+1, level, v); // right
-    }
-
-    void lOrder(TreeNode* root, vector<vector<int>>& ans){ // lOrder = levelOrder
-        int n = levels(root);
-        for(int i=1; i<=n; i++){
-            vector<int> v;
-            nthLevel (root, 1, i, v);
-            ans.push_back(v);
-            cout<<endl;
-        }
+    void lOrder(TreeNode* root, vector<vector<int>>& ans, int level ){ // lOrder = levelOrder
+        if(root==NULL) return;
+        ans[level].push_back(root->val);
+        lOrder(root->left,ans,level+1);
+        lOrder(root->right,ans,level+1);
     }
 
     vector<vector<int>> levelOrder(TreeNode* root) {
+        int n = levels(root);
         vector<vector<int>> ans;
-        lOrder(root, ans);
+        for(int i=1;i<=n;i++){
+            vector<int> v;
+            ans.push_back(v);
+        }
+        lOrder(root, ans,0);
         return ans;
     }
 };
