@@ -1,4 +1,4 @@
-// PW Solution
+// Bad Method :- 1
 class Solution {
 public:
     bool exists(TreeNode* root, TreeNode* target) {
