@@ -1,18 +1,23 @@
-// Method - 1 (Bad method)
+// Method - 2
 class Solution {
 public:
-    long long maxTree(TreeNode* root){
-        if(root==NULL) return LLONG_MIN;
-        return max((long long)(root->val), max(maxTree(root->left),maxTree(root->right))); 
+    TreeNode* prev = NULL;
+    bool flag = true;
+    void inorder(TreeNode* root){
+        if(root==NULL) return; // base case
+        inorder(root->left); // (left)
+        if(prev != NULL){
+            if(root->val <= prev->val){
+                flag = false;
+                return;
+            }
+        }
+        prev = root;
+        inorder(root->right); //(Right)
     }
-    long long minTree(TreeNode* root){
-        if(root==NULL) return LLONG_MAX;
-        return min((long long)(root->val), min(minTree(root->left),minTree(root->right))); 
-    }
+    
     bool isValidBST(TreeNode* root) {
-        if(root==NULL) return true;
-        else if((long long)(root->val) <= maxTree(root->left)) return false;
-        else if((long long)(root->val) >= minTree(root->right)) return false;
-        return isValidBST(root->left) && isValidBST(root->right);
+        inorder(root);
+        return flag;
     }
 };
