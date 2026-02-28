@@ -32,9 +32,9 @@ public:
             if(root->left != NULL || root->right !=NULL){
                 // Replacd the root with its inorder pred = predecessor or suc = successor
                 // After Replacing delete the pred/suc
-                TreeNode* pred = iop(root);
-                root -> val = pred->val;
-                root->left = deleteNode(root->left, pred->val);
+                TreeNode* suc = ios(root);
+                root -> val = suc->val;
+                root->right = deleteNode(root->right, suc->val);
             }
         }
         else if(root->val > key){ // go left
