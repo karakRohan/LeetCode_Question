@@ -1,16 +1,28 @@
-//Method :- 2 (Recursion)
+//Method :- 3 (Morris Traversal Code) Best Method
 class Solution {
 public:
     void flatten(TreeNode* root) {
+        // Base case Banai age
         if(root==NULL) return;
-        flatten(root->left);
-        flatten(root->right);
-        TreeNode* r = root->right;
-        root->right = root->left;
-        root->left = NULL;
+        TreeNode* curr = root;
+        while(curr != NULL){
+            if(curr -> left != NULL){
+                // save the right
+                TreeNode* r = curr -> right;
+                curr -> right = curr->left;
+                // finding pred(Predecessor)
+                TreeNode* pred = curr -> left;
+                while(pred->right != NULL) pred = pred -> right;
+                // Linking korbo aber
+                pred -> right = r;
+                curr = curr->left;
+            }
+            else curr = curr = curr -> right;
+        }
         TreeNode* temp = root;
-        while(temp->right != NULL) temp = temp -> right;
-        temp -> right = r;
-        return;
+        while(temp->right != NULL){
+            temp -> left = NULL;
+            temp = temp -> right;
+        }
     }
 };
