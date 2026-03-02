@@ -4,7 +4,7 @@ public:
         int n = arr.size();
         int count = 0;
         //unordered_set<int>
-        for(int i = 0; i<=n-1;i++){
+        for(int i = 0; i<n-1;i++){
             string rev = arr[i];
             reverse(rev.begin(), rev.end());
             for(int j=i+1; j<n; j++){
