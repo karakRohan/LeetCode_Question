@@ -1,3 +1,4 @@
+// Method - 1 [O(n²)]
 class Solution {
 public:
     int maximumNumberOfStringPairs(vector<string>& arr ) {
