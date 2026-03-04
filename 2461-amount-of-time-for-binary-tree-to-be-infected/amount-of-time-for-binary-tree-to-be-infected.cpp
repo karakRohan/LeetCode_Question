@@ -22,7 +22,7 @@ public:
         find(root, start);
         unordered_map<TreeNode*, TreeNode*> parent;
         markParent(root,parent);
-        unordered_set<TreeNode*> isInfected;
+        unordered_set<TreeNode*> isInfected; // is Infected
         isInfected.insert(first);
         queue<pair<TreeNode*, int>> q; //q = BFS
         // pair<TreeNode*, int> p;
