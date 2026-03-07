@@ -15,7 +15,7 @@ public:
             ans.push_back(v);
             pq.pop();
         }
-        //sort(ans.begin(), ans.end()); //korle o hobe r na korle o hobe
+        sort(ans.begin(), ans.end()); //korle o hobe r na korle o hobe
         return ans;
     }
 };
