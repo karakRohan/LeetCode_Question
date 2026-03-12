@@ -1,9 +1,13 @@
-bool cmp(vector<int> &a, vector<int> &b){
+bool cmp(vector<int> &a, vector<int> &b){ // cmp = custom comparator
     return a[1] > b[1];
 } 
 class Solution {
 public:
     int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        /**
+         * T.C = O(nlogn)
+         * S.C = O(sort)
+        */
         sort(boxTypes.begin(), boxTypes.end(), cmp);
         int profit = 0;
         for(int i =0;i<boxTypes.size(); i++){
