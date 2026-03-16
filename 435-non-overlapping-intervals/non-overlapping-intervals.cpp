@@ -1,5 +1,7 @@
+// Method - 2 // Start 0 to end
+
 bool cmp(vector<int> &i1, vector<int> &i2){
-    return i1[1] < i2[1];
+    return i1[0] < i2[0];
 }
 
 class Solution {
@@ -11,6 +13,7 @@ public:
         for(int i = 1; i < intervals.size(); i++){
             if(intervals[i][0] < lastEndTime){
                 ans++;
+                lastEndTime = min(lastEndTime, intervals[i][1]);
             }
             else{
                 lastEndTime = intervals[i][1];
