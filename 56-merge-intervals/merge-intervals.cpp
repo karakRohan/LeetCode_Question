@@ -20,6 +20,7 @@ public:
                 result.push_back(intervals[i]);
             }
         }
+        reverse(result.begin(), result.end());
         return result;
     }
 };
