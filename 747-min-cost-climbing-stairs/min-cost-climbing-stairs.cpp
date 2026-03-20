@@ -1,4 +1,4 @@
-// Mrthod 1:- Recursion Or Memoization Code
+// Method 1:- Recursion Or Memoization Code
 
 class Solution {
 public:
