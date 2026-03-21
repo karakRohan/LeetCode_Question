@@ -1,4 +1,4 @@
-// Method :- 1 (Dp Solution )
+// Method :- 2 (Dp Solution )
 class Solution {
 public:
     vector<int>dp;
