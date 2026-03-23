@@ -33,7 +33,7 @@ public:
                 }
             }
 
-            int width = last + first + 1;
+            int width = last - first + 1;
             maxWidth = max(maxWidth, width);
         }
 
