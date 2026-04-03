@@ -8,7 +8,7 @@ public:
 
         // Ans Banayege apna 
         double ans = 0.0;
-        // 8 Call 
+        // 8 Call // // 8 moves of knight
         ans += f(n, i + 1, j + 2, k - 1) * 0.125;
         ans += f(n, i + 2, j + 1, k - 1) * 0.125;
         ans += f(n, i + 1, j - 2, k - 1) * 0.125;
