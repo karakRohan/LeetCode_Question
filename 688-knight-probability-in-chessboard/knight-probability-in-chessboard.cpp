@@ -1,6 +1,7 @@
 class Solution {
 public:
     double dp[30][30][105];
+    // 8 Calls ar Bodole Loop a Kaj Chalalam // dy/dx
     int dx[8] = {1,2,1,2,-1,-2,-1,-2};
     int dy[8] = {2,1,-2,-1,2,1,-2,-1};
     double f(int n, int i, int j, int k){
@@ -11,6 +12,7 @@ public:
         // Ans Banayege apna 
         double ans = 0.0;
 
+        // 8 Calls ar Bodole Loop a Kaj Chalalam
         for(int m = 0; m < 8; m++){
             ans += f(n, i+dx[m], j+dy[m], k-1)*(0.125); // 0.125 = 1/8
         }
