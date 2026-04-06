@@ -1,39 +1,18 @@
-// Solution In String
+// Method 2 :- Solution in Dp
 class Solution {
 public:
+
+    int dp[505][505];
+    int f(string &s1, string &s2, int i, int j){
+        if(i == s1.size()) return s2.size() - j; // 4,1
+        if(j == s2.size()) return s1.size() - i;
+
+        if(dp[i][j] != -1) return dp[i][j];
+        if(s1[i] == s2[j]) return dp[i][j] = f(s1,s2, i+1, j+1);
+        return dp[i][j] = min({1+f(s1,s2,i+1,j+1),1 + f(s1,s2,i+1,j), 1 + f(s1,s2,i,j+1)});
+    }
     int minDistance(string word1, string word2) {
-
-        int n = word1.size(); // length of first string
-        int m = word2.size(); // length of second string
-
-        // dp table where dp[i][j] = min operations to convert
-        // first i chars of word1 to first j chars of word2
-        vector<vector<int>> dp(n + 1, vector<int>(m + 1));
-
-        // base case: convert to empty string
-        for (int i = 0; i <= n; i++) dp[i][0] = i; // delete all
-        for (int j = 0; j <= m; j++) dp[0][j] = j; // insert all
-
-        // fill dp table
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= m; j++) {
-
-                // if characters match → no operation
-                if (word1[i - 1] == word2[j - 1]) {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } 
-                else {
-                    // 3 operations
-                    int insertOp = dp[i][j - 1];
-                    int deleteOp = dp[i - 1][j];
-                    int replaceOp = dp[i - 1][j - 1];
-
-                    // take minimum + 1 operation
-                    dp[i][j] = 1 + min(insertOp, min(deleteOp, replaceOp));
-                }
-            }
-        }
-
-        return dp[n][m]; // final answer
+        memset(dp, -1, sizeof dp);
+        return f(word1, word2, 0, 0 );
     }
 };
