@@ -1,29 +1,30 @@
+// Method - 2
 class Solution {
 public:
     
-    // function for normal house robber (linear)
+    // normal house robber (linear DP)
     int solve(vector<int>& nums, int start, int end) {
-        int prev2 = 0; // dp[i-2]
-        int prev1 = 0; // dp[i-1]
+        int n = end - start + 1;
+        vector<int> dp(n, 0);
         
-        for (int i = start; i <= end; i++) {
-            int take = nums[i] + prev2;
-            int notTake = prev1;
-            
-            int curr = max(take, notTake);
-            prev2 = prev1;
-            prev1 = curr;
+        dp[0] = nums[start];
+        
+        for (int i = 1; i < n; i++) {
+            int take = nums[start + i];
+            if (i > 1) take += dp[i - 2];            
+            int notTake = dp[i - 1];            
+            dp[i] = max(take, notTake);
         }
-        return prev1;
+        return dp[n - 1];
     }
     
     int rob(vector<int>& nums) {
         int n = nums.size();
         // edge case
         if (n == 1) return nums[0];
-        // case 1: skip last house
+        // case 1: skip last
         int case1 = solve(nums, 0, n - 2);
-        // case 2: skip first house
+        // case 2: skip first
         int case2 = solve(nums, 1, n - 1);
         return max(case1, case2);
     }
