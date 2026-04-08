@@ -12,7 +12,7 @@ public:
         arr = grid;
         n = arr.size();
         m = arr[0].size();
-        dp.clear();
+        dp.clear(); 
         dp.resize(205, vector<int> (205, 0));
         dp[n-1][m-1] = arr[n-1][m-1];
         for(int i = n-2; i>=0; i--){
