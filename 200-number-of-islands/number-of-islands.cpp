@@ -17,7 +17,7 @@ public:
                 cc++; // Connected Component
                 queue<pair<int, int> > qu;
                 qu.push({r, c}); // store the source node
-                grid[r][c] = '1'; // mark it visited
+                grid[r][c] = '0'; // mark it visited
 
                 while(not qu.empty()){
                     auto curr = qu.front(); // get one node from queue
