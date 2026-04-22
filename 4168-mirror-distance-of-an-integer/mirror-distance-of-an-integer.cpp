@@ -1,5 +1,5 @@
 class Solution {
-    int rev(int x) {
+    int rev(int x){
         string s = to_string(x);
         reverse(s.begin(), s.end());
         return stoi(s);
