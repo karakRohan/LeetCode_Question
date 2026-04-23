@@ -1,3 +1,5 @@
+// Striver Solution
+
 class Solution {
 public:
     void solve(int col, vector<string> &board, vector<vector<string>> &ans,vector<int> &leftRow,vector<int> &upperDiagonal, vector<int> &lowerDiagonal, int n) {
