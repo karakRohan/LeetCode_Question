@@ -1,38 +1,57 @@
-// Striver Solution
-
 class Solution {
 public:
-    void solve(int col, vector<string> &board, vector<vector<string>> &ans,vector<int> &leftRow,vector<int> &upperDiagonal, vector<int> &lowerDiagonal, int n) {
-        if(col == n) {
-            ans.push_back(board);
+    vector<vector<char>> grid;
+    vector<vector<string>> result; // to store the final result
+
+    bool canPlaceQueen(int row, int col, int n){
+        // column check
+        for(int i = row-1; i>= 0; i--){
+            if(grid[i][col] == 'Q') return false; // we are attacked
+        }
+        // left diagonal check
+        for(int i = row-1, j = col-1; i>=0 && j>=0; i--, j--){
+            if(grid[i][j] == 'Q') return false; // we are attacked
+        }
+        // right diagonal check
+        for(int i = row-1, j = col+1; i>=0 && j<n; i--, j++){
+            if(grid[i][j] == 'Q') return false; // we are attacked
+        }
+        return true;  // no attack found
+    }
+
+    // backtracking function
+    void f(int row, int n){
+        // base case
+        if(row == n){
+            vector<string> temp;
+
+            for(int i=0; i<n; i++){
+                string res = "";
+                for(int j=0; j<n; j++){
+                    res += grid[i][j];
+                }
+                temp.push_back(res);
+            }
+
+            result.push_back(temp);
             return;
         }
 
-        for(int row = 0; row < n; row++) {
-            if(leftRow[row] == 0 && lowerDiagonal[row + col] == 0
-               && upperDiagonal[n - 1 + col - row] == 0) {
-
-                board[row][col] = 'Q';
-                leftRow[row] = 1;
-                lowerDiagonal[row + col] = 1;
-                upperDiagonal[n - 1 + col - row] = 1;
-                solve(col + 1, board, ans, leftRow, upperDiagonal, lowerDiagonal, n);
-                board[row][col] = '.';
-                leftRow[row] = 0;
-                lowerDiagonal[row + col] = 0;
-                upperDiagonal[n - 1 + col - row] = 0;
+        for(int col=0; col<n; col++){
+            if(canPlaceQueen(row, col, n)){
+                grid[row][col] = 'Q';
+                f(row+1, n);
+                grid[row][col] = '.'; // backtracking step
             }
         }
     }
 
-public:
     vector<vector<string>> solveNQueens(int n) {
-        vector<vector<string>> ans;
-        vector<string> board(n);
-        string s(n, '.');
-        for(int i = 0; i < n; i++) board[i] = s;
-        vector<int> leftRow(n, 0), upperDiagonal(2 * n - 1, 0), lowerDiagonal(2 * n - 1, 0);
-        solve(0, board, ans, leftRow, upperDiagonal, lowerDiagonal, n);
-        return ans;
+        grid.clear();
+        result.clear();
+        grid.resize(n, vector<char>(n, '.')); // initialize grid
+
+        f(0, n); // start from row 0
+        return result;
     }
 };
