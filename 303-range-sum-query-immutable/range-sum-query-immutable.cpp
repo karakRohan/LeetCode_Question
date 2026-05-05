@@ -1,3 +1,4 @@
+// Method :-1 
 class NumArray {
 public:
     vector<int> arr;
