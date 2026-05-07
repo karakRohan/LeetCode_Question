@@ -1,7 +1,7 @@
 class Solution {
 public:
     int helperFunction(int num){
-        int gFlag = 0; // Eta check korche number ta valid rotated number kina
+        int gFlag = 0; // gFlag = Eta check korche number ta valid rotated number kina
         while(num > 0){
             int l = num % 10;
             num /= 10;
