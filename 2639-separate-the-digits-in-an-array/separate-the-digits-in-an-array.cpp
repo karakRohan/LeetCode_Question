@@ -2,14 +2,9 @@ class Solution {
 public:
     vector<int> separateDigits(vector<int>& nums) {
         vector<int> ans;
-
-        for(int num : nums) {
-            string str = to_string(num);
-            for(char ch : str) {
+        for(int x : nums)
+            for(char ch : to_string(x))
                 ans.push_back(ch - '0');
-            }
-        }
-
         return ans;
     }
 };
