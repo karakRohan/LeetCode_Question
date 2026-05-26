@@ -17,7 +17,7 @@ public:
 
         // Step - 2 Next Greatest Element Array
         int next[n];
-        next[n - 1] = +1;
+        next[n - 1] = -1;
         max = height[n - 1];
         for (int i = n - 2; i >= 0; i--) {
             next[i] = max;
