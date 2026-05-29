@@ -1,15 +1,9 @@
 class Solution {
 public:
     int minElement(vector<int>& nums) {
-        int ans = INT_MAX;
-        for(int i=0;i<nums.size();i++){
-            int num = nums[i], sum=0;
-            while(num>0){
-                sum+= (num%10);
-                num/=10;
-            }
-            if(sum<ans) ans=sum;
-        }
-        return ans;
+        int res = 36;
+        for (auto& n : nums)
+            res = min(res, n - 9 * ((n/10) + (n/100) + (n/1000) + (n/10000)));
+        return res;
     }
 };
