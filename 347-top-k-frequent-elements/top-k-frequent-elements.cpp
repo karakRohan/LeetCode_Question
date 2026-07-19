@@ -1,26 +1,17 @@
-// Method - 1
 class Solution {
 public:
-    typedef pair<int,int> pi;
-    vector<int> topKFrequent(vector<int>& arr, int k) {
+    vector<int> topKFrequent(vector<int>& nums, int k) {
         unordered_map<int,int> mp;
-        // map pair is <ele,freq>
-        for(int ele : arr){
-            mp[ele]++;
+        for(int x : nums){
+            mp[x]++;
         }
-        // Heap pair is<freq,ele> // Min Heap (Priority queue a vorechi)
-        priority_queue<pi,vector<pi>,greater<pi>>pq;
-        for(auto x : mp){ // Hash map
-            int ele = x.first, freq = x.second;
-            pair<int,int> p = {freq,ele};
-            pq.push(p);
-            // pq.push({x.second, x.first});
-            if(pq.size() > k) pq.pop();
+        priority_queue<pair<int,int>> pq;
+        for(auto it : mp){
+            pq.push({it.second, it.first});
         }
-        vector<int> ans; // khali vector array
-        while(pq.size()>0){
-            int ele = pq.top().second;
-            ans.push_back(ele);
+        vector<int> ans;
+        while(k--){
+            ans.push_back(pq.top().second);
             pq.pop();
         }
         return ans;
