@@ -1,3 +1,4 @@
+// Method - 1
 class Solution {
 public:
     typedef pair<int,int> pi;
