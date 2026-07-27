@@ -1,16 +1,8 @@
-// Method - 1
+// Method - 2 (Using Inbuild Function)
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        int a=0,b=0;
-        for(int x:nums){
-            if(x>=a){
-                b=a;
-                a=x;
-            }else if(x>b){
-                b=x;
-            }
-        }
-        return (a-1)*(b-1);
+        sort(rbegin(nums), rend(nums));
+        return (nums[0] - 1) * (nums[1] - 1);
     }
 };
