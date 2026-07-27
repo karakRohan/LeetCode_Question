@@ -1,3 +1,4 @@
+// Method - 1
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
