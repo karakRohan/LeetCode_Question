@@ -7,7 +7,7 @@ public:
             mini = min(mini, val);
             maxi = max(maxi, val);
         }
-        for(int i = mini+1; i <= maxi; i++){
+        for(int i = mini+1; i < maxi; i++){
             if(find(nums.begin(), nums.end(),i) == nums.end()){
                 missing.push_back(i);
             }
