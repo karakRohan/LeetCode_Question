@@ -1,17 +1,21 @@
 class Solution {
 public:
     int firstStableIndex(vector<int>& nums, int k) {
-        int maxi = 0;
+        int n=nums.size();
 
-        for(int i = 0; i<nums.size(); i++) {
-            maxi = max(maxi , nums[i]);
-            int mini = INT_MAX;
+        for(int i=0;i<n;i++){
+            int largest=nums[0];
+            int smallest=nums[i];
 
-            for(int j = i; j<nums.size(); j++) {
-                mini = min(mini , nums[j]);
+            for(int j=0;j<=i;j++){
+                largest=max(largest,nums[j]);
             }
             
-            if(maxi - mini <= k) {
+            for(int j=i;j<n;j++){
+                smallest=min(smallest,nums[j]);
+            }
+
+            if(largest-smallest <= k){
                 return i;
             }
         }
