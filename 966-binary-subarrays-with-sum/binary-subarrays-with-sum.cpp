@@ -5,7 +5,7 @@ public:
         mp[0]=1;
         int sum=0,count=0;
         for (int num:nums) {
-            sum += num;
+            sum+=num;
             if (mp.find(sum-goal)!=mp.end()) {
                 count+=mp[sum-goal];
             }
