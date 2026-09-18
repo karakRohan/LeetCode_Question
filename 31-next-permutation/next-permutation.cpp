@@ -18,5 +18,5 @@ public:
             swap(nums[i],nums[j]);
         }
         reverse(nums,i + 1,n-1);
-        }
+    }
 };
