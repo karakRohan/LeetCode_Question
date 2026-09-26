@@ -1,4 +1,4 @@
-// fast slow pointer approach
+// fast slow pointer approach (Babu dada)
 class Solution {
 public:
     int getNext(int n){
