@@ -1,22 +1,23 @@
+// fast slow pointer approach
 class Solution {
 public:
-    int squareSum(int num){
+    int getNext(int n){
         int sum = 0;
-        while(num != 0){
-            int digit = num % 10;
-            sum += digit * digit;
-            num = num / 10;
+        while(n>0){
+            int digit = n%10;
+            sum += digit*digit;
+            n=n/10;
         }
         return sum;
     }
     bool isHappy(int n) {
-        int fast = n, slow = n;
-        while(true){
-            fast = squareSum(squareSum(fast));
-            slow = squareSum(slow);
+        int slow = n;
+        int fast = n;
+        do{
+            slow = getNext(slow);
+            fast = getNext(getNext(fast));
+        }while(fast!=slow);
 
-            if(fast == 1) return true;
-            if(fast == slow) return false;
-        }
+        return slow==1;
     }
 };
