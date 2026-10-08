@@ -2,7 +2,7 @@ class Solution {
 public:
     void sortColors(vector<int>& nums) {
         // Two Pass Solution
-        int n = nums.size(), noz = 0, noo =0, notw=0;
+        int n = nums.size(), noz =0, noo =0, notw=0;
         for(int i=0;i<n;i++){
             if(nums[i]==0) noz++;
             else if(nums[i]==1) noo++;
