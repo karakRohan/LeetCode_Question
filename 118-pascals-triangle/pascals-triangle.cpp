@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<vector<int>> generate(int numRows) {
+    vector<vector<int>> generate(int numRows) { // generate() name akta function create korechi
         int m = numRows;
         vector<vector<int>>v;
         for(int i=1;i<=m;i++){
