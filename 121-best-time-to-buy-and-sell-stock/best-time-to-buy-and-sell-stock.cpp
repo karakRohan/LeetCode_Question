@@ -1,35 +1,13 @@
 class Solution {
 public:
-    int dp[100005][2][2];
-
-    int f(vector<int> &prices, int i, int k, bool on){
-        if(i == prices.size()) return 0;
-
-        if(dp[i][k][on] != -1) return dp[i][k][on];
-
-        int ans = INT_MIN;
-
-        // skip
-        ans = f(prices, i+1, k, on);
-
-        // take action
-        if(on){
-            // sell
-            ans = max(ans, prices[i] + f(prices, i+1, k-1, false));
-        }
-        else{
-            // buy
-            if(k > 0){
-                ans = max(ans, f(prices, i+1, k, true) - prices[i]);
-            }
-        }
-
-        return dp[i][k][on] = ans;
-    }
-
     int maxProfit(vector<int>& prices) {
-        memset(dp, -1, sizeof dp);
-        int k = 1; // only 1 transaction allowed
-        return f(prices, 0, k, false);
+        int maxprofit = 0,bestbuy = prices[0];
+        for(int i=1;i<prices.size();i++){
+            if(prices[i]>bestbuy){
+                maxprofit=max(maxprofit,prices[i]-bestbuy);
+            }
+            bestbuy=min(bestbuy,prices[i]);
+        }
+        return maxprofit;
     }
 };
