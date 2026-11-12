@@ -1,15 +1,19 @@
-// Step - 1
+// Step - 2 Two Pointer
+
 
 class Solution {
 public:
     string reverseWords(string s) {
-        stringstream ss(s);
-        string temp,ans;
-        while(ss>>temp){
-            reverse(temp.begin(),temp.end());
-            ans+= (temp+" ");
+        int i=0;
+        for(int j=0;j<s.length();j++)
+        {
+            if(s[j]==' ')
+            {
+                reverse(s.begin()+i,s.begin()+j);
+                i=j+1;
+            }
         }
-        
-        return ans.substr(0,ans.size()-1);
+        reverse(s.begin()+i,s.end());
+        return s;
     }
 };
