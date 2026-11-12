@@ -1,6 +1,5 @@
 // Step - 2 Two Pointer
 
-
 class Solution {
 public:
     string reverseWords(string s) {
