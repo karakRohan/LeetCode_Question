@@ -1,12 +1,11 @@
 class Solution {
 public:
-    int xorOperation(int n, int start) 
-    {
-        int x=0;
-        for (int i=0; i<n; i++)
-        {
-            x^= (start+2*i);
+    int xorOperation(int n, int start) {
+        int ans = 0;
+        while (n--) {
+            ans ^= start;
+            start += 2;
         }
-        return x;
+        return ans;
     }
 };
